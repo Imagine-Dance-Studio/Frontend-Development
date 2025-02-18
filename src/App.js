@@ -30,7 +30,7 @@ export default function App() {
             emergency,
         }
         try {
-            const response = await fetch("http://localhost:8080/submit-form", {
+            const response = await fetch("https://backend-development-jc6p.onrender.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
