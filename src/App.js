@@ -1,5 +1,6 @@
 import './App.css';
 import { React, useState } from 'react';
+import Logo from "./assets/Logo.jpg";
 
 export default function App() {
     const [fullName, setFullName] = useState("");
@@ -47,10 +48,13 @@ export default function App() {
 
     return (
         <div className="Application">
-            <h1>Imagine Dance Studio</h1>
+            <div className="heading-container">
+                <img src={Logo} alt="Logo"></img>
+                <h1>Imagine Dance Studio</h1>
+            </div>
             <h3>Registration Application Form</h3>
             <form action="#" method="GET">
-                <fieldset>
+                <fieldset className="watermark">
                     <label htmlfor="fullname">Student Full Name: * </label>
                     <input type="text" name="fullname" id="regForm" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Student Full Name" required></input>
                     <label htmlfor="fatherName">Father Name: * </label>
@@ -64,8 +68,8 @@ export default function App() {
                     <label htmlfor="age">Age: * </label>
                     <input type="number" name="age" id="regForm" value={age} placeholder="Age" onChange={(e) => setAge(e.target.value)} required></input>
                     <label htmlfor="gender" onChange={(e) => setGender(e.target.value)} >Gender: * </label>
-                    <input type="radio" name="male" id="regForm" value="male" checked={gender === "male"} onChange = {(e) => setGender(e.target.value)}/> Male
-                    <input type="radio" name="female" id="regForm" value="female" checked={gender === "female"} onChange = {(e) => setGender(e.target.value)}/>Female
+                    <input type="radio" name="male" id="regForm" value="male" checked={gender === "male"} onChange={(e) => setGender(e.target.value)} /> Male
+                    <input type="radio" name="female" id="regForm" value="female" checked={gender === "female"} onChange={(e) => setGender(e.target.value)} />Female
                     <label>Experience: * </label>
                     <select name="experience" id="select" value={experience} onChange={(e) => setExperience(e.target.value)} required>
                         <optgroup label="Experience" selected={experience === ""}>
@@ -84,7 +88,7 @@ export default function App() {
                     <label htmlFor="emenregencycontact" >Emergency Contact*</label>
                     <input type="number" name="emergencycontact" id="regForm" value={emergency} onChange={(e) => setEmergency(e.target.value)} placeholder="Emergency Contact" required />
                     <label htmlFor="file">Upload Photo*</label>
-          <input type="file" name="file" id="file" onChange={(e) => setPhoto(e.target.files[0])} placeholder="Upload Photo" required />
+                    <input type="file" name="file" id="file" onChange={(e) => setPhoto(e.target.files[0])} placeholder="Upload Photo" required />
                     <h4>Terms & Conditions: </h4>
                     <p>1. Should wear proper shoes while entering the class.<br />
                         2. Wearing jeans inside the class is strictly prohibited.<br />
