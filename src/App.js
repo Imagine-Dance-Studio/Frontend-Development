@@ -15,9 +15,9 @@ export default function App() {
     const [emergency, setEmergency] = useState("");
     const [photo, setPhoto] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(
+        const formData = {
             fullName,
             fatherName,
             motherName,
@@ -28,8 +28,22 @@ export default function App() {
             experience,
             selectedOption,
             emergency,
-            photo
-        );
+        }
+        try {
+            const response = await fetch("http://localhost:8080/submit-form", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            const result = await response.json();
+            alert(result.message);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+        console.log("Sending form data:", formData);
     }
 
     const handelReset = () => {
@@ -43,7 +57,7 @@ export default function App() {
         setExperience("");
         setSelectedOption("");
         setEmergency("");
-        setPhoto("");
+        setPhoto(null);
     }
 
     return (
@@ -53,7 +67,7 @@ export default function App() {
                 <h1>Imagine Dance Studio</h1>
             </div>
             <h3>Registration Application Form</h3>
-            <form action="#" method="GET">
+            <form onSubmit={handleSubmit} method="POST">
                 <fieldset className="watermark">
                     <label htmlfor="fullname">Student Full Name: * </label>
                     <input type="text" name="fullname" id="regForm" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Student Full Name" required></input>
