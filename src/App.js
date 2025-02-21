@@ -1,6 +1,6 @@
 import './App.css';
 import { React, useState } from 'react';
-import Logo from "./assets/Logo.jpg";
+import Logo from "./assets/Logo.png";
 
 export default function App() {
     const [fullName, setFullName] = useState("");
@@ -15,7 +15,7 @@ export default function App() {
     const [emergency, setEmergency] = useState("");
     const [photo, setPhoto] = useState("");
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = {
             fullName,
@@ -37,7 +37,7 @@ export default function App() {
                 },
                 body: JSON.stringify(formData)
             });
-    
+
             const result = await response.json();
             alert(result.message);
         } catch (error) {
@@ -61,14 +61,20 @@ export default function App() {
     }
 
     return (
-        <div className="Application">
-            <div className="heading-container">
-                <img src={Logo} alt="Logo"></img>
-                <h1>Imagine Dance Studio</h1>
-            </div>
-            <h3>Registration Application Form</h3>
+        <div className="conatiner">
+
             <form onSubmit={handleSubmit} method="POST">
                 <fieldset className="watermark">
+                    <div className = "header">
+                    <span className = "logo">
+                        <img src={Logo} alt="Logo" height="100px" width="100px"></img>
+                    </span>
+                    </div>
+                    
+                    <div className="title">
+                        <h1>Imagine Dance Studio</h1>
+                        <h3>Registration Application Form</h3>
+                    </div>
                     <label htmlfor="fullname">Student Full Name: * </label>
                     <input type="text" name="fullname" id="regForm" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Student Full Name" required></input>
                     <label htmlfor="fatherName">Father Name: * </label>
