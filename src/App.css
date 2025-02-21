@@ -14,7 +14,7 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .header {
@@ -134,22 +134,57 @@ button:hover {
 
 
 
-@media screen and (max-width: 768px) {
-    .Application {
-        width: 95%;
-        padding: 20px;
-    }
+/* ------------------------- */
+/* 📱 Responsive Breakpoints */
+/* ------------------------- */
 
+/* 📝 Mobile phones (up to 480px) */
+@media screen and (max-width: 480px) {
+    .title h1 { font-size: 1.6rem; }
+    .title h3 { font-size: 1.2rem; }
+    
     fieldset {
-        width: 100%;
+      padding: 15px;
     }
-
-    .button-container {
-        flex-direction: column;
-    }
-
+  
     button {
-        width: 100%;
-        margin-bottom: 10px;
+      width: 100%;
+      margin-bottom: 10px;
     }
-}
+  }
+  
+  /* 📱 Larger phones & small tablets (481px - 768px) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    .title h1 { font-size: 1.8rem; }
+    .title h3 { font-size: 1.3rem; }
+  
+    fieldset {
+      width: 90%;
+    }
+  
+    .button-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  
+  /* 💻 Tablets & small desktops (769px - 1024px) */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    fieldset {
+      width: 80%;
+    }
+  
+    .title h1 { font-size: 2rem; }
+    .title h3 { font-size: 1.4rem; }
+  }
+  
+  /* 🖥️ Large screens (1025px and up) */
+  @media screen and (min-width: 1025px) {
+    fieldset {
+      width: 70%;
+    }
+  }
